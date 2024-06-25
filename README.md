@@ -1,3 +1,3 @@
-# Hermes
+# Hermès
 [WIP]
-A file transfer automation software
+A file transfer automation software.
