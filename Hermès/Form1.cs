@@ -23,7 +23,7 @@ namespace Hermès
             resManager = new ResourceManager("Hermès.Properties.Resources", typeof(Form1).Assembly);
             cultureInfo = CultureInfo.CurrentCulture;
 
-            InitializeComponent(); // Cette ligne doit être la première dans le constructeur
+            InitializeComponent();
 
             LoadSettings();
             InitializeDarkModeToggle();
@@ -77,7 +77,7 @@ namespace Hermès
             tbSrc.Text = Properties.Settings.Default.SourcePath;
             tbDst.Text = Properties.Settings.Default.DestinationPath;
             string savedLanguage = Properties.Settings.Default.Language;
-            SetLanguage(savedLanguage);  // Assurez-vous que SetLanguage() est appelé après l'initialisation des variables
+            SetLanguage(savedLanguage);
         }
 
 
@@ -297,14 +297,12 @@ namespace Hermès
 
         private void UpdateLanguage()
         {
-            // Assurez-vous que resManager et cultureInfo sont bien initialisés
             if (resManager == null || cultureInfo == null)
             {
                 MessageBox.Show("Resource manager or culture info is not initialized", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Assurez-vous que les contrôles ne sont pas null avant de les utiliser
             lbTmr.Text = _isScrutating ? _timeLeft.ToString() : resManager.GetString("ScrutationNotLaunched", cultureInfo);
             btnScr.Text = _isScrutating ? resManager.GetString("StopScrutation", cultureInfo) : resManager.GetString("StartScrutation", cultureInfo);
             btnSrcBrowse.Text = resManager.GetString("Browse", cultureInfo);
